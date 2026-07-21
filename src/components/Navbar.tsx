@@ -1,6 +1,6 @@
-import { FaMoon, FaSun } from 'react-icons/fa';
-import { navLinks } from '../constants/portfolioData';
-import { Theme } from '../hooks/useTheme';
+import { FaMoon, FaSun } from "react-icons/fa";
+import { navLinks } from "../constants/portfolioData";
+import type { Theme } from "../hooks/useTheme";
 
 type NavbarProps = {
   theme: Theme;
@@ -20,8 +20,12 @@ function Navbar({ theme, onToggleTheme }: NavbarProps) {
           </a>
         ))}
       </nav>
-      <button className="theme-toggle" onClick={onToggleTheme} aria-label="Toggle color theme">
-        {theme === 'dark' ? <FaSun /> : <FaMoon />}
+      <button
+        className="theme-toggle"
+        onClick={onToggleTheme}
+        aria-label="Toggle color theme"
+      >
+        {theme === "dark" ? <FaSun /> : <FaMoon />}
       </button>
     </header>
   );
