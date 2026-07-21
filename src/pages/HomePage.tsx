@@ -1,12 +1,11 @@
-import About from '../components/About';
-import Blog from '../components/Blog';
-import Contact from '../components/Contact';
-import Experience from '../components/Experience';
-import Footer from '../components/Footer';
-import Hero from '../components/Hero';
-import Projects from '../components/Projects';
-import Skills from '../components/Skills';
-import Seo from '../components/Seo';
+import About from "../components/About";
+import Contact from "../components/Contact";
+import Experience from "../components/Experience";
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import Projects from "../components/Projects";
+import Skills from "../components/Skills";
+import Seo from "../components/Seo";
 
 function HomePage() {
   return (
@@ -18,9 +17,8 @@ function HomePage() {
       <Hero />
       <About />
       <Skills />
-      <Experience />
       <Projects />
-      <Blog />
+      <Experience />
       <Contact />
       <Footer />
     </>

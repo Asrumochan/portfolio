@@ -65,7 +65,11 @@ function Experience() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="experience" className="section experience-section">
+    <section
+      ref={sectionRef}
+      id="experience"
+      className="section experience-section"
+    >
       <div className="experience-scene">
         <motion.article
           className="experience-board"
@@ -81,30 +85,37 @@ function Experience() {
           <div className="experience-head">
             <span>Career Board</span>
             <h3>Experience</h3>
-            <p>A snapshot of my journey building scalable products across teams and domains.</p>
+            <p>
+              A snapshot of my journey building scalable products across teams
+              and domains.
+            </p>
           </div>
 
           <div className="experience-timeline">
             <div className="experience-progress-track" aria-hidden="true">
-              <div className="experience-progress-fill" style={{ height: `${Math.round(progress * 100)}%` }} />
-            </div>
-            <span className="experience-progress-label">{Math.round(progress * 100)}%</span>
-            {timeline.map((item, index) => (
               <div
-                className={`experience-entry ${index % 2 === 0 ? "left" : "right"} ${
-                  progress * timeline.length >= index + 1 ? "is-active" : ""
-                }`}
-                key={`${item.year}-${item.role}`}
-              >
-                <div className="experience-dot" />
-                <div className="experience-node">
-                  <span className="experience-year">{item.year}</span>
-                  <h4>{item.role}</h4>
-                  <p className="experience-org">{item.org}</p>
-                  <p>{item.description}</p>
+                className="experience-progress-fill"
+                style={{ height: `${Math.round(progress * 100)}%` }}
+              />
+            </div>
+            <div className="experience-timeline-items">
+              {timeline.map((item, index) => (
+                <div
+                  className={`experience-entry ${index % 2 === 0 ? "left" : "right"} ${
+                    progress * timeline.length >= index + 1 ? "is-active" : ""
+                  }`}
+                  key={`${item.year}-${item.role}`}
+                >
+                  <div className="experience-dot" />
+                  <div className="experience-node">
+                    <span className="experience-year">{item.year}</span>
+                    <h4>{item.role}</h4>
+                    <p className="experience-org">{item.org}</p>
+                    <p>{item.description}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </motion.article>
       </div>

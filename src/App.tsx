@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AnimatedCursor from './components/AnimatedCursor';
-import FloatingParticles from './components/FloatingParticles';
-import Loader from './components/Loader';
-import Navbar from './components/Navbar';
-import ScrollProgress from './components/ScrollProgress';
-import HomePage from './pages/HomePage';
+import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AnimatedCursor from "./components/AnimatedCursor";
+import FloatingParticles from "./components/FloatingParticles";
+import Loader from "./components/Loader";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.setAttribute("data-theme", "dark");
     const timer = window.setTimeout(() => setIsLoading(false), 1400);
     return () => window.clearTimeout(timer);
   }, []);
@@ -23,7 +22,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app-shell">
-        <ScrollProgress />
         <AnimatedCursor />
         <FloatingParticles />
         <Navbar />

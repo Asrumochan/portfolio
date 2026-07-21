@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaFileDownload, FaPaperPlane } from "react-icons/fa";
 import profilePhoto from "../assets/1000150033.jpg";
+import resumePdf from "../assets/ASRUMOCHAN_4_FULL_STACK.pdf";
 import { profile } from "../constants/portfolioData";
 import { revealUp } from "../animations/variants";
 import Button from "./ui/Button";
@@ -56,7 +57,9 @@ function Hero() {
             return target[index];
           }
 
-          return scrambleCharacters[Math.floor(Math.random() * scrambleCharacters.length)];
+          return scrambleCharacters[
+            Math.floor(Math.random() * scrambleCharacters.length)
+          ];
         })
         .join("");
 
@@ -113,11 +116,7 @@ function Hero() {
             <Button href="#get-in-touch" icon={<FaPaperPlane />}>
               Hire Me
             </Button>
-            <Button
-              href={profile.resume}
-              variant="ghost"
-              icon={<FaFileDownload />}
-            >
+            <Button href={resumePdf} variant="ghost" icon={<FaFileDownload />}>
               Download CV
             </Button>
           </motion.div>
