@@ -14,7 +14,6 @@ export type Project = {
 };
 
 export const navLinks = [
-  'Home',
   'About',
   'Skills',
   'Experience',
@@ -106,9 +105,8 @@ export const profile = {
   name: 'ASRUMOCHAN PARIDA',
   role: 'Full Stack Developer',
   subtitle:
-    'Building scalable web applications with React, Node.js, Express, and MongoDB for global teams.',
+    'Building scalable web applications with React, Node.js, Express, and MongoDB for global teams. I focus on clean architecture, performance, and user-first product delivery.',
   years: '4+',
-  timezone: 'IST · Flexible overlap with US/EU',
   email: 'asrumochan.parida@gmail.com',
   linkedin: 'https://linkedin.com',
   github: 'https://github.com',

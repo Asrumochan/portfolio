@@ -16,7 +16,9 @@ function Navbar() {
 
   return (
     <header className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
-      <span className="brand">Portfolio</span>
+      <a className="brand" href="#home" aria-label="Back to homepage">
+        Portfolio
+      </a>
       <nav>
         {navLinks.map((link) => (
           <a key={link} href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}>

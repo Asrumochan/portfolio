@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaFileDownload, FaPaperPlane } from "react-icons/fa";
 import profilePhoto from "../assets/1000150033.jpg";
@@ -6,25 +6,71 @@ import { profile } from "../constants/portfolioData";
 import { revealUp } from "../animations/variants";
 import Button from "./ui/Button";
 
-const techPhrases = [
-  "React",
-  "Node.js",
-  "Express",
-  "MongoDB",
-  "TypeScript",
-  "REST APIs",
-];
+const scrambleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 function Hero() {
-  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [displayName, setDisplayName] = useState(profile.name);
+  const [typedSubtitle, setTypedSubtitle] = useState("");
+  const scrambleTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const id = window.setInterval(() => {
-      setPhraseIndex((prev: number) => (prev + 1) % techPhrases.length);
-    }, 1800);
+    let index = 0;
+    const target = profile.subtitle;
+    const typeTimer = window.setInterval(() => {
+      index += 1;
+      setTypedSubtitle(target.slice(0, index));
 
-    return () => window.clearInterval(id);
+      if (index >= target.length) {
+        window.clearInterval(typeTimer);
+      }
+    }, 24);
+
+    return () => window.clearInterval(typeTimer);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (scrambleTimerRef.current) {
+        window.clearInterval(scrambleTimerRef.current);
+      }
+    };
+  }, []);
+
+  const runNameScramble = () => {
+    if (scrambleTimerRef.current) {
+      window.clearInterval(scrambleTimerRef.current);
+    }
+
+    const target = profile.name;
+    let iteration = 0;
+
+    scrambleTimerRef.current = window.setInterval(() => {
+      const nextText = target
+        .split("")
+        .map((character, index) => {
+          if (character === " ") {
+            return " ";
+          }
+
+          if (index < iteration) {
+            return target[index];
+          }
+
+          return scrambleCharacters[Math.floor(Math.random() * scrambleCharacters.length)];
+        })
+        .join("");
+
+      setDisplayName(nextText);
+      iteration += 0.45;
+
+      if (iteration >= target.length) {
+        if (scrambleTimerRef.current) {
+          window.clearInterval(scrambleTimerRef.current);
+        }
+        setDisplayName(target);
+      }
+    }, 34);
+  };
 
   return (
     <section id="home" className="section hero">
@@ -37,43 +83,26 @@ function Hero() {
             whileInView="show"
             viewport={{ once: true }}
           >
-            Hi, I&apos;m <span className="wave">👋</span>
+            Hi <span className="wave">👋</span>, I&apos;m
           </motion.p>
           <motion.h1
+            className="hero-name"
             variants={revealUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
+            onMouseEnter={runNameScramble}
           >
-            {profile.name}
+            {displayName}
           </motion.h1>
-          <motion.h2
+          <motion.p
+            className="hero-subtitle hero-subtitle-typed"
             variants={revealUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
           >
-            {profile.role}
-          </motion.h2>
-          <motion.p
-            className="hero-typing"
-            variants={revealUp}
-            initial="hidden"
-            whileInView="show"
-          >
-            Building with{" "}
-            <span key={techPhrases[phraseIndex]}>
-              {techPhrases[phraseIndex]}
-            </span>
-          </motion.p>
-          <motion.p
-            className="hero-subtitle"
-            variants={revealUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            {profile.subtitle}
+            {typedSubtitle}
           </motion.p>
           <motion.div
             className="hero-actions"
@@ -92,14 +121,6 @@ function Hero() {
               Download CV
             </Button>
           </motion.div>
-          <motion.p
-            className="hero-timezone"
-            variants={revealUp}
-            initial="hidden"
-            whileInView="show"
-          >
-            {profile.timezone}
-          </motion.p>
         </div>
 
         <motion.figure
