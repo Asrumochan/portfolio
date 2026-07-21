@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaFileDownload, FaPaperPlane } from "react-icons/fa";
-import profilePhoto from "../assets/1000150033.jpg";
+import profilePhoto from "../assets/PXL_20260126_101507672.jpg";
 import resumePdf from "../assets/ASRUMOCHAN_4_FULL_STACK.pdf";
 import { profile } from "../constants/portfolioData";
 import { revealUp } from "../animations/variants";
