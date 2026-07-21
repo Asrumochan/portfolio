@@ -13,22 +13,61 @@ type Status = "idle" | "success" | "error";
 
 function Contact() {
   const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
 
+    const fromName = (
+      form.elements.namedItem("from_name") as HTMLInputElement | null
+    )?.value?.trim();
+    const fromEmail = (
+      form.elements.namedItem("from_email") as HTMLInputElement | null
+    )?.value?.trim();
+    const message = (
+      form.elements.namedItem("message") as HTMLTextAreaElement | null
+    )?.value?.trim();
+
+    if (!fromName || !fromEmail || !message) {
+      setStatus("error");
+      setErrorMessage("Please fill in your name, email, and message.");
+      return;
+    }
+
     if (!serviceId || !templateId || !publicKey) {
       setStatus("error");
+      setErrorMessage(
+        "EmailJS is not configured yet. Add the service, template, and public key values first.",
+      );
       return;
     }
 
     try {
-      await emailjs.sendForm(serviceId, templateId, form, { publicKey });
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: fromName,
+          from_email: fromEmail,
+          message,
+          reply_to: fromEmail,
+        },
+        {
+          publicKey,
+        },
+      );
       form.reset();
       setStatus("success");
-    } catch {
+      setErrorMessage("");
+    } catch (error) {
+      console.error("EmailJS send failed", error);
       setStatus("error");
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "The message could not be sent. Please try again later.",
+      );
     }
   };
 
@@ -54,13 +93,13 @@ function Contact() {
 
         <form className="glass-card form contact-form" onSubmit={onSubmit}>
           <input
-            name="user_name"
+            name="from_name"
             type="text"
             placeholder="Your name"
             required
           />
           <input
-            name="user_email"
+            name="from_email"
             type="email"
             placeholder="Your email"
             required
@@ -79,7 +118,8 @@ function Contact() {
           )}
           {status === "error" && (
             <p className="status-error">
-              Add EmailJS env keys or contact me directly at {profile.email}.
+              {errorMessage ||
+                `Add EmailJS env keys or contact me directly at ${profile.email}.`}
             </p>
           )}
         </form>
