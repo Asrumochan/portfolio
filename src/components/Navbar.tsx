@@ -10,9 +10,6 @@ type NavbarProps = {
 function Navbar({ theme, onToggleTheme }: NavbarProps) {
   return (
     <header className="navbar">
-      <a className="brand" href="#home" aria-label="Go to top">
-        AP
-      </a>
       <nav>
         {navLinks.map((link) => (
           <a key={link} href={`#${link.toLowerCase()}`}>
