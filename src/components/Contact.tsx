@@ -64,6 +64,8 @@ function Contact() {
           user_email: fromEmail,
           message,
           reply_to: fromEmail,
+          subject: `Portfolio contact from ${fromName}`,
+          to_email: profile.email,
         },
         {
           publicKey,
@@ -99,7 +101,7 @@ function Contact() {
             GitHub: <a href={profile.github}>Profile</a>
           </p>
           <p>
-            Resume: <a href={profile.resume}>Download</a>
+            Mobile: {profile.mobile}
           </p>
         </div>
 

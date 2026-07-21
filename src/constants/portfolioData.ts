@@ -119,10 +119,11 @@ export const profile = {
   subtitle:
     "Building scalable web applications with React, Node.js, Express, and MongoDB for global teams. I focus on clean architecture, performance, and user-first product delivery.",
   years: "4+",
-  email: "asrumochan.parida@gmail.com",
-  linkedin: "https://linkedin.com",
-  github: "https://github.com",
+  email: "asrumochanparida99@gmail.com",
+  linkedin: "https://www.linkedin.com/in/asrumochan-parida-9975361a5/",
+  github: "https://github.com/Asrumochan",
+  mobile: "6370622566",
   resume: "#",
   location: "Remote",
-  githubUsername: "asrumochanparida",
+  githubUsername: "Asrumochan",
 };
