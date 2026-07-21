@@ -19,9 +19,8 @@ export const navLinks = [
   'Skills',
   'Experience',
   'Projects',
-  'GitHub',
   'Blog',
-  'Contact',
+  'Get in Touch',
 ] as const;
 
 export const skillCategories: SkillCategory[] = [
@@ -109,7 +108,6 @@ export const profile = {
   subtitle:
     'Building scalable web applications with React, Node.js, Express, and MongoDB for global teams.',
   years: '4+',
-  availability: 'Open to remote full-time opportunities',
   timezone: 'IST · Flexible overlap with US/EU',
   email: 'asrumochan.parida@gmail.com',
   linkedin: 'https://linkedin.com',

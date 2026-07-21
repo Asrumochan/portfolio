@@ -5,14 +5,13 @@ import FloatingParticles from './components/FloatingParticles';
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import ScrollProgress from './components/ScrollProgress';
-import { useTheme } from './hooks/useTheme';
 import HomePage from './pages/HomePage';
 
 function App() {
-  const { theme, toggleTheme } = useTheme('dark');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    document.documentElement.setAttribute('data-theme', 'dark');
     const timer = window.setTimeout(() => setIsLoading(false), 1400);
     return () => window.clearTimeout(timer);
   }, []);
@@ -27,7 +26,7 @@ function App() {
         <ScrollProgress />
         <AnimatedCursor />
         <FloatingParticles />
-        <Navbar theme={theme} onToggleTheme={toggleTheme} />
+        <Navbar />
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
