@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaFileDownload, FaPaperPlane } from 'react-icons/fa';
-import profilePhoto from '../assets/profile-photo.svg';
-import { profile } from '../constants/portfolioData';
-import { revealUp } from '../animations/variants';
-import Button from './ui/Button';
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { FaFileDownload, FaPaperPlane } from "react-icons/fa";
+import profilePhoto from "../assets/1000150033.jpg";
+import { profile } from "../constants/portfolioData";
+import { revealUp } from "../animations/variants";
+import Button from "./ui/Button";
 
 const techPhrases = [
-  'React',
-  'Node.js',
-  'Express',
-  'MongoDB',
-  'TypeScript',
-  'REST APIs',
+  "React",
+  "Node.js",
+  "Express",
+  "MongoDB",
+  "TypeScript",
+  "REST APIs",
 ];
 
 function Hero() {
@@ -55,8 +55,16 @@ function Hero() {
           >
             {profile.role}
           </motion.h2>
-          <motion.p className="hero-typing" variants={revealUp} initial="hidden" whileInView="show">
-            Building with <span key={techPhrases[phraseIndex]}>{techPhrases[phraseIndex]}</span>
+          <motion.p
+            className="hero-typing"
+            variants={revealUp}
+            initial="hidden"
+            whileInView="show"
+          >
+            Building with{" "}
+            <span key={techPhrases[phraseIndex]}>
+              {techPhrases[phraseIndex]}
+            </span>
           </motion.p>
           <motion.p
             className="hero-subtitle"
@@ -67,11 +75,20 @@ function Hero() {
           >
             {profile.subtitle}
           </motion.p>
-          <motion.div className="hero-actions" variants={revealUp} initial="hidden" whileInView="show">
+          <motion.div
+            className="hero-actions"
+            variants={revealUp}
+            initial="hidden"
+            whileInView="show"
+          >
             <Button href="#get-in-touch" icon={<FaPaperPlane />}>
               Hire Me
             </Button>
-            <Button href={profile.resume} variant="ghost" icon={<FaFileDownload />}>
+            <Button
+              href={profile.resume}
+              variant="ghost"
+              icon={<FaFileDownload />}
+            >
               Download CV
             </Button>
           </motion.div>
