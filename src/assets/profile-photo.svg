@@ -1,0 +1,16 @@
+<svg width="720" height="720" viewBox="0 0 720 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="90" y1="40" x2="620" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2B4F83" />
+      <stop offset="1" stop-color="#123B52" />
+    </linearGradient>
+    <linearGradient id="ring" x1="150" y1="140" x2="560" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5BE7C4" />
+      <stop offset="1" stop-color="#56A6FF" />
+    </linearGradient>
+  </defs>
+  <rect width="720" height="720" rx="60" fill="url(#bg)"/>
+  <circle cx="360" cy="300" r="150" fill="#0D1A30" stroke="url(#ring)" stroke-width="14"/>
+  <path d="M130 620C170 514 250 470 360 470C470 470 550 514 590 620" fill="#0D1A30" stroke="url(#ring)" stroke-width="14"/>
+  <text x="360" y="675" text-anchor="middle" fill="#E8EEFC" font-family="Manrope, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="3">ASRUMOCHAN PARIDA</text>
+</svg>

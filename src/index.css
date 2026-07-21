@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;600;700&display=swap');
 
 :root {
   --bg: #0a111f;
@@ -7,11 +6,18 @@
   --bg-soft-2: #16243d;
   --text: #e8eefc;
   --muted: #a4b4d8;
+  --heading: #f4f8ff;
   --card: rgba(123, 171, 255, 0.12);
   --card-border: rgba(170, 206, 255, 0.28);
   --primary: #5be7c4;
   --secondary: #56a6ff;
   --accent: #ffb86a;
+  --chip-bg: rgba(255, 255, 255, 0.08);
+  --chip-text: #dbe9ff;
+  --tag-bg: rgba(86, 166, 255, 0.24);
+  --tag-text: #dff0ff;
+  --input-bg: rgba(255, 255, 255, 0.06);
+  --carousel-radius: 360px;
   --shadow: 0 20px 60px rgba(4, 9, 20, 0.45);
 }
 
@@ -21,10 +27,16 @@ html[data-theme='light'] {
   --bg-soft-2: #ecf4ff;
   --text: #18233d;
   --muted: #4a5b7d;
+  --heading: #0f1d38;
   --card: rgba(255, 255, 255, 0.7);
   --card-border: rgba(35, 67, 126, 0.16);
   --primary: #0d8f72;
   --secondary: #165ec9;
+  --chip-bg: rgba(16, 44, 95, 0.08);
+  --chip-text: #122b59;
+  --tag-bg: rgba(22, 94, 201, 0.13);
+  --tag-text: #123f8c;
+  --input-bg: rgba(8, 20, 48, 0.04);
   --shadow: 0 16px 50px rgba(33, 64, 112, 0.18);
 }
 
@@ -37,6 +49,10 @@ body,
 #root {
   margin: 0;
   min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -70,12 +86,14 @@ main {
 
 .section {
   padding: 6rem 0 2.2rem;
+  scroll-margin-top: 6.5rem;
 }
 
 .section h3 {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(1.65rem, 1.2rem + 1.4vw, 2.3rem);
   margin-bottom: 1.25rem;
+  color: var(--heading);
 }
 
 .hero {
@@ -83,6 +101,32 @@ main {
   display: grid;
   align-content: center;
   gap: 0.55rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-photo-card {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 30px;
+  border: 1px solid var(--card-border);
+  background: color-mix(in srgb, var(--bg-soft-2) 58%, transparent);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.hero-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--secondary) 40%, var(--card-border));
 }
 
 .hero-pill {
@@ -132,10 +176,10 @@ main {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: 1px solid color-mix(in srgb, var(--secondary) 40%, var(--card-border));
-  color: color-mix(in srgb, var(--text) 75%, var(--secondary));
+  color: var(--chip-text);
   border-radius: 999px;
   padding: 0.3rem 0.64rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--chip-bg);
 }
 
 .hero-timezone {
@@ -223,7 +267,7 @@ main {
 
 .theme-toggle {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--chip-bg);
   border-color: var(--card-border);
   display: inline-flex;
   align-items: center;
@@ -289,7 +333,8 @@ main {
   border: 1px solid var(--card-border);
   border-radius: 14px;
   padding: 0.45rem 0.6rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--chip-bg);
+  color: var(--chip-text);
 }
 
 .chip-list li span {
@@ -338,8 +383,8 @@ main {
 
 .chip {
   border-color: var(--card-border);
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--chip-text);
+  background: var(--chip-bg);
 }
 
 .chip-active {
@@ -349,6 +394,86 @@ main {
 
 .project-grid {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.project-carousel {
+  display: grid;
+  gap: 1rem;
+}
+
+.carousel-shell {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.project-stage {
+  position: relative;
+  height: 520px;
+  perspective: 1400px;
+  overflow: hidden;
+}
+
+.project-ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: grid;
+  place-items: center;
+}
+
+.project-card-3d {
+  position: absolute;
+  width: min(76vw, 370px);
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  margin: 0;
+  translate: -50% -50%;
+}
+
+.carousel-nav {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  background: var(--chip-bg);
+  color: var(--text);
+  font-size: 1.65rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.carousel-nav:hover {
+  transform: scale(1.06);
+  border-color: var(--secondary);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+  background: color-mix(in srgb, var(--muted) 65%, transparent);
+  cursor: pointer;
+}
+
+.carousel-dot-active {
+  width: 26px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
 }
 
 .project-card {
@@ -399,7 +524,8 @@ main {
   padding: 0.32rem 0.6rem;
   font-size: 0.77rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--secondary) 18%, rgba(255, 255, 255, 0.06));
+  background: var(--tag-bg);
+  color: var(--tag-text);
 }
 
 .actions-row a {
@@ -438,7 +564,7 @@ main {
   width: 100%;
   padding: 0.8rem 0.9rem;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--input-bg);
   border: 1px solid var(--card-border);
   border-radius: 14px;
   font-family: inherit;
@@ -557,6 +683,23 @@ main {
     min-height: 78vh;
   }
 
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .hero-photo-card {
+    max-width: 340px;
+  }
+
+  .project-stage {
+    height: 490px;
+  }
+
+  :root {
+    --carousel-radius: 260px;
+  }
+
   .hero-stack {
     gap: 0.45rem;
   }
@@ -567,9 +710,16 @@ main {
 
   .section {
     padding-top: 4rem;
+    scroll-margin-top: 5.2rem;
   }
 
   .cursor-glow {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
