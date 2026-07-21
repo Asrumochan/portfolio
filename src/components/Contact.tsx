@@ -30,10 +30,11 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="section">
-      <h3>Contact</h3>
+    <section id="get-in-touch" className="section contact-section">
+      <h3 className="contact-title">Get in Touch</h3>
+      <p className="contact-lead">Have a project in mind or want to collaborate? Let&apos;s connect.</p>
       <div className="contact-grid">
-        <div className="glass-card">
+        <div className="glass-card contact-card">
           <p>Email: {profile.email}</p>
           <p>
             LinkedIn: <a href={profile.linkedin}>Profile</a>
@@ -46,7 +47,7 @@ function Contact() {
           </p>
         </div>
 
-        <form className="glass-card form" onSubmit={onSubmit}>
+        <form className="glass-card form contact-form" onSubmit={onSubmit}>
           <input name="user_name" type="text" placeholder="Your name" required />
           <input name="user_email" type="email" placeholder="Your email" required />
           <textarea name="message" rows={5} placeholder="Tell me about your project" required />

@@ -1,24 +1,43 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { FaFileDownload, FaPaperPlane } from 'react-icons/fa';
 import profilePhoto from '../assets/profile-photo.svg';
 import { profile } from '../constants/portfolioData';
 import { revealUp } from '../animations/variants';
+import Button from './ui/Button';
+
+const techPhrases = [
+  'React',
+  'Node.js',
+  'Express',
+  'MongoDB',
+  'TypeScript',
+  'REST APIs',
+];
 
 function Hero() {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setPhraseIndex((prev: number) => (prev + 1) % techPhrases.length);
+    }, 1800);
+
+    return () => window.clearInterval(id);
+  }, []);
+
   return (
     <section id="home" className="section hero">
       <div className="hero-grid">
-        <div>
-          <motion.span
-            className="hero-pill"
+        <div className="hero-copy">
+          <motion.p
+            className="hero-greeting"
             variants={revealUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
           >
-            {profile.availability}
-          </motion.span>
-          <motion.p variants={revealUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-            Hi, I&apos;m
+            Hi, I&apos;m <span className="wave">👋</span>
           </motion.p>
           <motion.h1 variants={revealUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
             {profile.name}
@@ -26,6 +45,9 @@ function Hero() {
           <motion.h2 variants={revealUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
             {profile.role}
           </motion.h2>
+          <motion.p className="hero-typing" variants={revealUp} initial="hidden" whileInView="show">
+            Building with <span key={techPhrases[phraseIndex]}>{techPhrases[phraseIndex]}</span>
+          </motion.p>
           <motion.p
             className="hero-subtitle"
             variants={revealUp}
@@ -35,19 +57,13 @@ function Hero() {
           >
             {profile.subtitle}
           </motion.p>
-          <motion.ul className="hero-stack" variants={revealUp} initial="hidden" whileInView="show">
-            <li>React</li>
-            <li>Node.js</li>
-            <li>Express</li>
-            <li>MongoDB</li>
-          </motion.ul>
           <motion.div className="hero-actions" variants={revealUp} initial="hidden" whileInView="show">
-            <a className="btn" href="#contact">
+            <Button href="#get-in-touch" icon={<FaPaperPlane />}>
               Hire Me
-            </a>
-            <a className="btn btn-outline" href={profile.resume}>
-              Download Resume
-            </a>
+            </Button>
+            <Button href={profile.resume} variant="ghost" icon={<FaFileDownload />}>
+              Download CV
+            </Button>
           </motion.div>
           <motion.p className="hero-timezone" variants={revealUp} initial="hidden" whileInView="show">
             {profile.timezone}

@@ -3,7 +3,6 @@ import Blog from '../components/Blog';
 import Contact from '../components/Contact';
 import Experience from '../components/Experience';
 import Footer from '../components/Footer';
-import GithubSection from '../components/GithubSection';
 import Hero from '../components/Hero';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
@@ -21,7 +20,6 @@ function HomePage() {
       <Skills />
       <Experience />
       <Projects />
-      <GithubSection />
       <Blog />
       <Contact />
       <Footer />

@@ -1,25 +1,29 @@
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 import { navLinks } from '../constants/portfolioData';
-import { Theme } from '../hooks/useTheme';
 
-type NavbarProps = {
-  theme: Theme;
-  onToggleTheme: () => void;
-};
+function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
 
-function Navbar({ theme, onToggleTheme }: NavbarProps) {
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 32);
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="navbar">
+    <header className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
+      <span className="brand">Portfolio</span>
       <nav>
         {navLinks.map((link) => (
-          <a key={link} href={`#${link.toLowerCase()}`}>
+          <a key={link} href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}>
             {link}
           </a>
         ))}
       </nav>
-      <button className="theme-toggle" onClick={onToggleTheme} aria-label="Toggle color theme">
-        {theme === 'dark' ? <FaSun /> : <FaMoon />}
-      </button>
     </header>
   );
 }
