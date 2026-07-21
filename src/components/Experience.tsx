@@ -3,23 +3,23 @@ import { motion } from "framer-motion";
 
 const timeline = [
   {
-    year: "Nov 2023 - Present",
-    role: "Full Stack Developer",
-    org: "Mercedes-Benz Research and Development",
+    year: "April 2025 - Present",
+    role: "Senior Software Developer",
+    org: "Cognizant",
     description:
       "Shipped production-ready React features, supported migration to an AWS serverless stack, and accelerated delivery using AI-assisted workflows.",
   },
   {
-    year: "Jul 2022 - Nov 2023",
+    year: "May 2022 - March 2025",
     role: "Full Stack Developer",
-    org: "Incture Technologies",
+    org: "Cognizant",
     description:
       "Refactored legacy modules, built resilient APIs, and introduced test automation that improved reliability and release confidence.",
   },
   {
-    year: "May 2021 - Dec 2021",
-    role: "Freelance Project: Prayas Booking App",
-    org: "Self-Employed",
+    year: "January 2022 - March 2022",
+    role: "Intern",
+    org: "Cognizant",
     description:
       "Delivered a booking platform using Flutter and React with Firebase-powered authentication and real-time updates.",
   },
