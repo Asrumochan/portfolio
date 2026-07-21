@@ -58,6 +58,10 @@ function Contact() {
         {
           from_name: fromName,
           from_email: fromEmail,
+          name: fromName,
+          email: fromEmail,
+          user_name: fromName,
+          user_email: fromEmail,
           message,
           reply_to: fromEmail,
         },
