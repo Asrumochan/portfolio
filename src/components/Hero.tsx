@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import profilePhoto from '../assets/profile-photo.svg';
-import { profile } from '../constants/portfolioData';
-import { revealUp } from '../animations/variants';
+import { motion } from "framer-motion";
+import profilePhoto from "../assets/1000150033.jpg";
+import { profile } from "../constants/portfolioData";
+import { revealUp } from "../animations/variants";
 
 function Hero() {
   return (
@@ -17,13 +17,28 @@ function Hero() {
           >
             {profile.availability}
           </motion.span>
-          <motion.p variants={revealUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <motion.p
+            variants={revealUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             Hi, I&apos;m
           </motion.p>
-          <motion.h1 variants={revealUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <motion.h1
+            variants={revealUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             {profile.name}
           </motion.h1>
-          <motion.h2 variants={revealUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <motion.h2
+            variants={revealUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             {profile.role}
           </motion.h2>
           <motion.p
@@ -35,13 +50,23 @@ function Hero() {
           >
             {profile.subtitle}
           </motion.p>
-          <motion.ul className="hero-stack" variants={revealUp} initial="hidden" whileInView="show">
+          <motion.ul
+            className="hero-stack"
+            variants={revealUp}
+            initial="hidden"
+            whileInView="show"
+          >
             <li>React</li>
             <li>Node.js</li>
             <li>Express</li>
             <li>MongoDB</li>
           </motion.ul>
-          <motion.div className="hero-actions" variants={revealUp} initial="hidden" whileInView="show">
+          <motion.div
+            className="hero-actions"
+            variants={revealUp}
+            initial="hidden"
+            whileInView="show"
+          >
             <a className="btn" href="#contact">
               Hire Me
             </a>
@@ -49,7 +74,12 @@ function Hero() {
               Download Resume
             </a>
           </motion.div>
-          <motion.p className="hero-timezone" variants={revealUp} initial="hidden" whileInView="show">
+          <motion.p
+            className="hero-timezone"
+            variants={revealUp}
+            initial="hidden"
+            whileInView="show"
+          >
             {profile.timezone}
           </motion.p>
         </div>
@@ -61,7 +91,12 @@ function Hero() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          <img src={profilePhoto} alt="Asrumochan Parida" className="hero-photo" loading="eager" />
+          <img
+            src={profilePhoto}
+            alt="Profile photo"
+            className="hero-photo"
+            loading="eager"
+          />
         </motion.figure>
       </div>
     </section>
