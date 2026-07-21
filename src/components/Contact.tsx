@@ -38,7 +38,15 @@ function Contact() {
     if (!serviceId || !templateId || !publicKey) {
       setStatus("error");
       setErrorMessage(
-        "EmailJS is not configured yet. Add the service, template, and public key values first.",
+        `EmailJS is not configured for this deployment. Missing values: ${
+          [
+            !serviceId ? "serviceId" : "",
+            !templateId ? "templateId" : "",
+            !publicKey ? "publicKey" : "",
+          ]
+            .filter(Boolean)
+            .join(", ") || "unknown"
+        }.`,
       );
       return;
     }
