@@ -360,12 +360,18 @@ main {
     backdrop-filter 260ms ease,
     box-shadow 260ms ease,
     padding 260ms ease,
-    top 260ms ease;
+    top 260ms ease,
+    width 260ms ease;
 }
 
 .navbar-scrolled {
   top: 0.7rem;
-  padding: 0.58rem 0.85rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  max-width: none;
+  padding: 0.58rem 1rem;
+  border-radius: 14px;
   background: rgba(141, 152, 171, 0.18);
   border-color: rgba(188, 197, 213, 0.26);
   backdrop-filter: blur(10px);
