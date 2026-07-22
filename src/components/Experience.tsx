@@ -3,32 +3,32 @@ import { motion } from "framer-motion";
 
 const timeline = [
   {
-    year: "April 2025 - Present",
+    year: "Apr 2025 – Present",
     role: "Senior Software Developer",
     org: "Cognizant",
     description:
-      "Shipped production-ready React features, supported migration to an AWS serverless stack, and accelerated delivery using AI-assisted workflows.",
+      "Building and enhancing enterprise React applications, developing scalable frontend solutions, integrating REST APIs, and contributing to cloud-native deployments and AI-assisted development workflows.",
   },
   {
-    year: "May 2022 - March 2025",
+    year: "May 2022 – Mar 2025",
     role: "Full Stack Developer",
     org: "Cognizant",
     description:
-      "Refactored legacy modules, built resilient APIs, and introduced test automation that improved reliability and release confidence.",
+      "Developed full-stack web applications using React.js, Node.js, Express.js, and MongoDB. Built reusable UI components, developed REST APIs, optimized application performance, and collaborated with cross-functional teams to deliver enterprise solutions.",
   },
   {
-    year: "January 2022 - March 2022",
-    role: "Intern",
+    year: "Jan 2022 – Mar 2022",
+    role: "Software Developer Intern",
     org: "Cognizant",
     description:
-      "Delivered a booking platform using Flutter and React with Firebase-powered authentication and real-time updates.",
+      "Developed a booking platform using Flutter, React, and Firebase with secure authentication, real-time updates, and responsive user interfaces while gaining hands-on experience in agile development.",
   },
   {
-    year: "Graduated 2022",
-    role: "Bachelors Degree in Electrical Engineering",
-    org: "Veer Surendra Sai University of Technology",
+    year: "2022",
+    role: "B.Tech in Electrical Engineering",
+    org: "Veer Surendra Sai University of Technology (VSSUT), Burla",
     description:
-      "Completed engineering degree with an 8.3 GPA, strengthening analytical thinking and structured problem solving.",
+      "Graduated with an 7.64 CGPA, building a strong foundation in analytical thinking, software development, and problem-solving.",
   },
 ];
 
