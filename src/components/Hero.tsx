@@ -37,6 +37,23 @@ function Hero() {
     };
   }, []);
 
+  useEffect(() => {
+    // Mobile devices do not emit hover reliably, so trigger once on load.
+    const isNonHoverDevice =
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: none)").matches;
+
+    if (!isNonHoverDevice) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      runNameScramble();
+    }, 420);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
   const runNameScramble = () => {
     if (scrambleTimerRef.current) {
       window.clearInterval(scrambleTimerRef.current);
@@ -95,9 +112,29 @@ function Hero() {
             whileInView="show"
             viewport={{ once: true }}
             onMouseEnter={runNameScramble}
+            onTouchStart={runNameScramble}
+            onClick={runNameScramble}
           >
             {displayName}
           </motion.h1>
+        </div>
+
+        <motion.figure
+          className="hero-photo-card"
+          variants={revealUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <img
+            src={profilePhoto}
+            alt="Profile photo"
+            className="hero-photo"
+            loading="eager"
+          />
+        </motion.figure>
+
+        <div className="hero-details">
           <motion.p
             className="hero-subtitle hero-subtitle-typed"
             variants={revealUp}
@@ -121,21 +158,6 @@ function Hero() {
             </Button>
           </motion.div>
         </div>
-
-        <motion.figure
-          className="hero-photo-card"
-          variants={revealUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          <img
-            src={profilePhoto}
-            alt="Profile photo"
-            className="hero-photo"
-            loading="eager"
-          />
-        </motion.figure>
       </div>
     </section>
   );

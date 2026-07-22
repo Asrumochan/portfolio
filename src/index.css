@@ -107,13 +107,23 @@ main {
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(270px, 0.92fr);
+  grid-template-areas:
+    "copy photo"
+    "details photo";
   align-items: center;
   gap: 2.5rem;
 }
 
 .hero-copy {
+  grid-area: copy;
   display: grid;
   gap: 0.52rem;
+}
+
+.hero-details {
+  grid-area: details;
+  display: grid;
+  gap: 0.9rem;
 }
 
 .hero-greeting {
@@ -130,6 +140,7 @@ main {
 }
 
 .hero-photo-card {
+  grid-area: photo;
   margin: 0;
   padding: 0.85rem;
   border-radius: 999px;
@@ -1305,12 +1316,20 @@ main {
 
   .hero-grid {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "copy"
+      "photo"
+      "details";
     gap: 1.25rem;
   }
 
   .hero-photo-card {
-    width: min(74vw, 320px);
+    width: min(64vw, 260px);
     padding: 0.7rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 8.5vw, 2.55rem);
   }
 
   .project-stage {
@@ -1386,6 +1405,10 @@ main {
 
   .hero-stack li {
     font-size: 0.74rem;
+  }
+
+  .hero-name {
+    cursor: default;
   }
 
   .section {
