@@ -205,9 +205,7 @@ main {
 
 .hero-subtitle-typed {
   min-height: 3.4rem;
-  border-right: 2px solid color-mix(in srgb, var(--primary) 70%, transparent);
   padding-right: 0.18rem;
-  animation: typeCaret 700ms step-end infinite;
 }
 
 .hero-stack {
@@ -1311,8 +1309,8 @@ main {
   }
 
   .hero {
-    min-height: calc(100vh - 5.4rem);
-    min-height: calc(100svh - 5.4rem);
+    min-height: calc(100vh - 4.8rem);
+    min-height: calc(100svh - 4.8rem);
   }
 
   .hero-grid {
