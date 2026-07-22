@@ -18,10 +18,10 @@ const timeline = [
   },
   {
     year: "Jan 2022 – Mar 2022",
-    role: "Software Developer Intern",
+    role: "Web Development Trainee",
     org: "Cognizant",
     description:
-      "Developed a booking platform using Flutter, React, and Firebase with secure authentication, real-time updates, and responsive user interfaces while gaining hands-on experience in agile development.",
+      "Built a strong foundation in web development by creating small-scale applications with HTML, CSS, JavaScript, and React. Focused on responsive design, reusable components, API integration, and modern frontend development best practices.",
   },
   {
     year: "2022",
