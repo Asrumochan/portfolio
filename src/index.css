@@ -1311,7 +1311,8 @@ main {
   }
 
   .hero {
-    min-height: auto;
+    min-height: calc(100vh - 5.4rem);
+    min-height: calc(100svh - 5.4rem);
   }
 
   .hero-grid {
