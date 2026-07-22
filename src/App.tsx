@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", "dark");
-    const timer = window.setTimeout(() => setIsLoading(false), 1400);
+    const timer = window.setTimeout(() => setIsLoading(false), 2000);
     return () => window.clearTimeout(timer);
   }, []);
 
