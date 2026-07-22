@@ -35,8 +35,21 @@ const timeline = [
 function Experience() {
   const [scrollingDown, setScrollingDown] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth <= 820 : false,
+  );
   const lastY = useRef(0);
   const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const onResize = () => {
+      setIsMobile(window.innerWidth <= 820);
+    };
+
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -75,7 +88,9 @@ function Experience() {
           className="experience-board"
           initial={{ opacity: 0.55, rotateX: -24, y: 80, scale: 0.92 }}
           animate={
-            scrollingDown
+            isMobile
+              ? { opacity: 1, rotateX: 0, y: 0, z: 0, scale: 1 }
+              : scrollingDown
               ? { opacity: 1, rotateX: 0, y: 0, z: 0, scale: 1 }
               : { opacity: 0.88, rotateX: -17, y: 28, z: -70, scale: 0.95 }
           }
@@ -102,7 +117,9 @@ function Experience() {
               {timeline.map((item, index) => (
                 <div
                   className={`experience-entry ${index % 2 === 0 ? "left" : "right"} ${
-                    progress * timeline.length >= index + 1 ? "is-active" : ""
+                    !isMobile && progress * timeline.length >= index + 1
+                      ? "is-active"
+                      : ""
                   }`}
                   key={`${item.year}-${item.role}`}
                 >
@@ -111,7 +128,7 @@ function Experience() {
                     <span className="experience-year">{item.year}</span>
                     <h4>{item.role}</h4>
                     <p className="experience-org">{item.org}</p>
-                    <p>{item.description}</p>
+                    <p className="experience-description">{item.description}</p>
                   </div>
                 </div>
               ))}

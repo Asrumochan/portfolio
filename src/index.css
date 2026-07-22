@@ -1317,6 +1317,65 @@ main {
     height: 490px;
   }
 
+  .experience-scene {
+    perspective: none;
+  }
+
+  .experience-board {
+    padding: 1rem;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  }
+
+  .experience-head h3 {
+    font-size: 1.4rem;
+  }
+
+  .experience-head p {
+    font-size: 0.94rem;
+  }
+
+  .experience-progress-track,
+  .experience-dot {
+    display: none;
+  }
+
+  .experience-entry {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-block: 0.2rem;
+  }
+
+  .experience-entry.left .experience-node,
+  .experience-entry.right .experience-node {
+    grid-column: 1;
+    justify-self: stretch;
+    margin: 0;
+    text-align: left;
+  }
+
+  .experience-node {
+    min-height: auto;
+    max-width: 100%;
+    padding: 0.82rem 0.9rem;
+    border-radius: 14px;
+  }
+
+  .experience-node h4 {
+    font-size: 0.98rem;
+  }
+
+  .experience-node p,
+  .experience-org {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .experience-description {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
   :root {
     --carousel-radius: 260px;
   }
