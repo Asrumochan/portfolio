@@ -37,24 +37,11 @@ function Hero() {
     };
   }, []);
 
-  useEffect(() => {
-    // Mobile devices do not emit hover reliably, so trigger once on load.
-    const isNonHoverDevice =
-      typeof window !== "undefined" &&
-      window.matchMedia("(hover: none)").matches;
-
-    if (!isNonHoverDevice) {
+  const runNameScramble = () => {
+    if (typeof window !== "undefined" && window.innerWidth <= 820) {
       return;
     }
 
-    const timer = window.setTimeout(() => {
-      runNameScramble();
-    }, 420);
-
-    return () => window.clearTimeout(timer);
-  }, []);
-
-  const runNameScramble = () => {
     if (scrambleTimerRef.current) {
       window.clearInterval(scrambleTimerRef.current);
     }
@@ -112,8 +99,6 @@ function Hero() {
             whileInView="show"
             viewport={{ once: true }}
             onMouseEnter={runNameScramble}
-            onTouchStart={runNameScramble}
-            onClick={runNameScramble}
           >
             {displayName}
           </motion.h1>

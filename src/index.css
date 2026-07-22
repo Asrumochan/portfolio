@@ -1315,21 +1315,26 @@ main {
   }
 
   .hero-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) auto;
     grid-template-areas:
-      "copy"
-      "photo"
-      "details";
-    gap: 1.25rem;
+      "copy photo"
+      "details details";
+    align-items: center;
+    gap: 0.9rem;
   }
 
   .hero-photo-card {
-    width: min(64vw, 260px);
-    padding: 0.7rem;
+    width: clamp(110px, 28vw, 155px);
+    padding: 0.45rem;
+    justify-self: end;
   }
 
   .hero h1 {
     font-size: clamp(1.7rem, 8.5vw, 2.55rem);
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
   }
 
   .project-stage {
