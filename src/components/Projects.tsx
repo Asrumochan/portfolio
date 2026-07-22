@@ -10,6 +10,9 @@ type Filter = (typeof filters)[number];
 function Projects() {
   const [activeFilter, setActiveFilter] = useState<Filter>('all');
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth <= 820 : false,
+  );
 
   const filtered = useMemo(() => {
     if (activeFilter === 'all') {
@@ -22,6 +25,16 @@ function Projects() {
   useEffect(() => {
     setActiveIndex(0);
   }, [activeFilter]);
+
+  useEffect(() => {
+    const onResize = () => {
+      setIsMobile(window.innerWidth <= 820);
+    };
+
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   useEffect(() => {
     if (filtered.length <= 1) {
@@ -60,6 +73,48 @@ function Projects() {
         ))}
       </div>
       <div className="project-carousel">
+        {isMobile ? (
+          <div className="mobile-project-carousel">
+            <article className="glass-card project-card mobile-project-card" key={filtered[activeIndex]?.title}>
+              <div className="project-media">
+                <img
+                  src={filtered[activeIndex]?.image}
+                  alt={`${filtered[activeIndex]?.title} cover`}
+                  loading="lazy"
+                />
+                <div className="project-overlay" />
+              </div>
+              <div className="project-content">
+                <h4>{filtered[activeIndex]?.title}</h4>
+                <p>{filtered[activeIndex]?.description}</p>
+                <ul className="tags">
+                  {filtered[activeIndex]?.tech.map((stack) => (
+                    <li key={stack}>{stack}</li>
+                  ))}
+                </ul>
+                <div className="actions-row">
+                  <a href={filtered[activeIndex]?.demo} target="_blank" rel="noreferrer">
+                    View Live Demo
+                  </a>
+                  <a href={filtered[activeIndex]?.github} target="_blank" rel="noreferrer">
+                    Explore Code
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <div className="mobile-carousel-controls">
+              <button className="carousel-nav" onClick={goPrev} aria-label="Previous project">
+                ‹
+              </button>
+              <button className="carousel-nav" onClick={goNext} aria-label="Next project">
+                ›
+              </button>
+            </div>
+          </div>
+        ) : null}
+
+        {!isMobile ? (
         <div className="carousel-shell">
           <button className="carousel-nav" onClick={goPrev} aria-label="Previous project">
             ‹
@@ -105,6 +160,7 @@ function Projects() {
             ›
           </button>
         </div>
+        ) : null}
 
         <div className="carousel-dots" aria-label="Project selector">
           {filtered.map((project, index) => (

@@ -401,6 +401,41 @@ main {
   color: var(--text);
 }
 
+.nav-menu-btn {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: var(--chip-bg);
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.26rem;
+}
+
+.nav-menu-btn span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 999px;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.nav-menu-btn-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-menu-btn-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-menu-btn-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
 .theme-toggle {
   color: var(--text);
   background: var(--chip-bg);
@@ -783,6 +818,20 @@ main {
 .project-carousel {
   display: grid;
   gap: 1rem;
+}
+
+.mobile-project-carousel {
+  display: none;
+}
+
+.mobile-project-card {
+  max-width: 100%;
+}
+
+.mobile-carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
 }
 
 .carousel-shell {
@@ -1202,17 +1251,52 @@ main {
     padding: 0.52rem 0.65rem;
   }
 
-  .navbar nav {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 0.72rem;
-    padding-bottom: 0.1rem;
-    scrollbar-width: none;
+  .nav-menu-btn {
+    display: inline-flex;
   }
 
-  .navbar nav::-webkit-scrollbar {
+  .navbar nav {
+    position: absolute;
+    top: calc(100% + 0.55rem);
+    right: 0;
+    min-width: 220px;
     display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.55rem;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    background: color-mix(in srgb, var(--bg-soft) 90%, transparent);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 14px 30px rgba(8, 16, 32, 0.3);
+  }
+
+  .navbar nav.nav-open {
+    display: flex;
+  }
+
+  .navbar nav a {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    border-radius: 10px;
+  }
+
+  .navbar nav a:hover {
+    background: color-mix(in srgb, var(--chip-bg) 92%, transparent);
+  }
+
+  .project-stage,
+  .project-ring,
+  .project-card-3d,
+  .carousel-shell {
+    display: none;
+  }
+
+  .mobile-project-carousel {
+    display: grid;
+    gap: 0.8rem;
   }
 
   .hero {
