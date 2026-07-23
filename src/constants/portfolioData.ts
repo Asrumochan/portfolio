@@ -52,7 +52,7 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1632501641765-e568d28b0015?auto=format&fit=crop&w=1200&q=80",
     github: "https://github.com/Asrumochan/tictactoe",
-    demo: "https://example.com",
+    demo: "https://tictactoe-mu-ruddy.vercel.app/",
   },
   {
     title: "Rock Paper Scissors",
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80",
     github: "https://github.com/Asrumochan/rock_paper_scissors",
-    demo: "https://example.com",
+    demo: "https://rock-paper-scissors-olive-five.vercel.app/",
   },
   {
     title: "Game Hub",
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
     github: "https://github.com/Asrumochan/game-hub",
-    demo: "https://example.com",
+    demo: "https://asrumochan.github.io/game-hub/",
   },
   {
     title: "Mutant's Gym",
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80",
     github: "https://github.com/Asrumochan/BS_NAVBAR",
-    demo: "https://example.com",
+    demo: "https://bs-navbar.vercel.app/",
   },
   {
     title: "E-Commerce",
