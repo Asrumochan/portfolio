@@ -44,25 +44,47 @@ export const skillCategories: SkillCategory[] = [
 
 export const projects: Project[] = [
   {
-    title: "CI/CD Dashboard",
-    category: "fullstack",
+    title: "Tic Tac Toe",
+    category: "frontend",
     description:
-      "Pipeline visibility dashboard with deployment metrics and release insights.",
-    tech: ["React", "Node.js", "MongoDB"],
+      "Classic 3x3 strategy game with clean UI, turn tracking, and winner detection.",
+    tech: ["JavaScript", "HTML", "CSS"],
     image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
-    github: "https://github.com/",
+      "https://images.unsplash.com/photo-1632501641765-e568d28b0015?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Asrumochan/tictactoe",
     demo: "https://example.com",
   },
   {
-    title: "Job Portal",
-    category: "fullstack",
+    title: "Rock Paper Scissors",
+    category: "frontend",
     description:
-      "Modern hiring platform with role filters, recruiter panel, and JWT auth.",
-    tech: ["React", "Express", "MongoDB"],
+      "Interactive hand game with instant results, score updates, and smooth gameplay.",
+    tech: ["JavaScript", "HTML", "CSS"],
     image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-    github: "https://github.com/",
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Asrumochan/rock_paper_scissors",
+    demo: "https://example.com",
+  },
+  {
+    title: "Game Hub",
+    category: "frontend",
+    description:
+      "A centralized arcade-style hub that brings multiple mini-games into one React app.",
+    tech: ["React", "Vite", "JavaScript"],
+    image:
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Asrumochan/game-hub",
+    demo: "https://example.com",
+  },
+  {
+    title: "Mutant's Gym",
+    category: "frontend",
+    description:
+      "Modern fitness website with responsive sections, smooth navigation, and clean branding.",
+    tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+    image:
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Asrumochan/BS_NAVBAR",
     demo: "https://example.com",
   },
   {
