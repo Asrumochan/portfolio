@@ -96,7 +96,7 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80",
     github: "https://github.com/",
-    demo: "https://example.com",
+    demo: "https://asrumochan.github.io/E-commerce/",
   },
   {
     title: "AI Chat App",
