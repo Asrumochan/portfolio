@@ -7,6 +7,9 @@ const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
 const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as
   | string
   | undefined;
+const autoReplyTemplateId =
+  (import.meta.env.VITE_EMAILJS_AUTO_REPLY_TEMPLATE_ID as string | undefined) ??
+  "template_ksbl8c8";
 const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
 
 type Status = "idle" | "success" | "error";
@@ -71,6 +74,27 @@ function Contact() {
           publicKey,
         },
       );
+
+      await emailjs.send(
+        serviceId,
+        autoReplyTemplateId,
+        {
+          from_name: fromName,
+          from_email: fromEmail,
+          name: fromName,
+          email: fromEmail,
+          user_name: fromName,
+          user_email: fromEmail,
+          message: `Thanks for reaching out, ${fromName}. I have received your message and will get back to you soon.`,
+          reply_to: profile.email,
+          subject: `Thanks for contacting ${profile.name ?? "me"}`,
+          to_email: fromEmail,
+        },
+        {
+          publicKey,
+        },
+      );
+
       form.reset();
       setStatus("success");
       setErrorMessage("");
@@ -100,9 +124,7 @@ function Contact() {
           <p>
             GitHub: <a href={profile.github}>Profile</a>
           </p>
-          <p>
-            Mobile: {profile.mobile}
-          </p>
+          <p>Mobile: {profile.mobile}</p>
         </div>
 
         <form className="glass-card form contact-form" onSubmit={onSubmit}>
